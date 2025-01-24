@@ -33,6 +33,8 @@ ViewModel and LiveData: For managing UI-related data in a lifecycle-conscious wa
 
 Android Studio with proper setup installed on your machine.
 
+If you run the project and get this error "The project is using an incompatible version (AGP 8.7.2) of the Android Gradle plugin. Latest supported version is AGP 8.5.0"
+Upgrade your Android Studio to latest version.
 
 **Setup Instructions**
 
