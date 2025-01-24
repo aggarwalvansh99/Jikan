@@ -45,14 +45,20 @@ class AnimeListFragment : Fragment() {
         }
         binding.recyclerView.layoutManager = LinearLayoutManager(context)
         binding.recyclerView.adapter = animeListAdapter
+        viewModel.fetchTopAnimee()
 
-        viewModel.fetchTopAnime().observe(viewLifecycleOwner){  response ->
-            if (response != null) {
-                animeListAdapter.submitList(response.body()!!.data)
-            } else {
-                Toast.makeText(requireContext(), "Failed to load data", Toast.LENGTH_SHORT).show()
+        viewModel.topAnimeResponse.observe(viewLifecycleOwner){ response ->
+            if(response!=null){
+                animeListAdapter.submitList(response.data)
             }
         }
+//        viewModel.fetchTopAnime().observe(viewLifecycleOwner){  response ->
+//            if (response != null) {
+//                animeListAdapter.submitList(response.body()!!.data)
+//            } else {
+//                Toast.makeText(requireContext(), "Failed to load data", Toast.LENGTH_SHORT).show()
+//            }
+//        }
     }
 
     override fun onDestroyView() {

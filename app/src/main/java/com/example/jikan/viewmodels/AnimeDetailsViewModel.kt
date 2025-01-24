@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.jikan.repo.AnimeRepository
 import com.example.jikan.model.AnimeData
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class AnimeDetailsViewModel(private val repository: AnimeRepository) : ViewModel() {
@@ -14,9 +15,9 @@ class AnimeDetailsViewModel(private val repository: AnimeRepository) : ViewModel
     val animeDetails: LiveData<AnimeData?> = _animeDetails
 
     fun fetchAnimeDetails(animeId: Int) {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             try {
-                _animeDetails.value = repository.getAnimeDetails(animeId)
+                _animeDetails.postValue(repository.getAnimeDetails(animeId))
             } catch (e: Exception) {
                 _animeDetails.value = null
             }
