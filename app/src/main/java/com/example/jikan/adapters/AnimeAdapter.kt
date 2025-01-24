@@ -33,10 +33,24 @@ class AnimeAdapter(private val onClick: (Anime) -> Unit) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(anime: Anime) {
-            binding.title.text = anime.title
-            binding.episodes.text = "Episodes: ${anime.episodes ?: "N/A"}"
-            binding.rating.text = "Rating: ${anime.score ?: "N/A"}"
-            Picasso.get().load(anime.images.jpg.image_url).into(binding.poster)
+            if(!anime.title.isEmpty()) {
+                binding.title.text = anime.title
+            }else{
+                binding.title.text = "N/A"
+            }
+            if(anime.episodes!= null){
+                binding.episodes.text = "Episodes: ${anime.episodes}"
+            }else {
+                binding.episodes.text = "N/A"
+            }
+            if(anime.score!= null){
+                binding.rating.text = "Rating: ${anime.score}"
+            }else{
+                binding.rating.text = "N/A"
+            }
+            if(!anime.images.jpg.image_url.isEmpty()) {
+                Picasso.get().load(anime.images.jpg.image_url).into(binding.poster)
+            }
             binding.root.setOnClickListener { onClick(anime) }
         }
     }
