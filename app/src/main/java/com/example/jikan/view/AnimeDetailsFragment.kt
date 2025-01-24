@@ -81,6 +81,9 @@ class AnimeDetailsFragment : Fragment() {
                 }
             }
         }
+        binding.ivBack.setOnClickListener {
+            activity?.onBackPressed()
+        }
     }
 
     override fun onDestroyView() {
