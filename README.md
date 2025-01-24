@@ -23,7 +23,7 @@ Retrofit: For making API calls.
 
 Picasso: For image loading.
 
-[//]: # (Coroutines: For asynchronous operations.)
+Coroutines: For asynchronous operations.
 
 RecyclerView: For displaying a scrollable list of news articles.
 
