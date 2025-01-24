@@ -1,6 +1,6 @@
 package com.example.jikan.model
 
 
-data class TopAnimeResponse(
+data class AnimeListResponse(
     val data: List<Anime>
 )

@@ -4,15 +4,15 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
-import com.example.jikan.model.TopAnimeResponse
+import com.example.jikan.model.AnimeListResponse
 import com.example.jikan.repo.AnimeRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 
 class AnimeListViewModel(private val repository: AnimeRepository) : ViewModel() {
-    private val _topAnime: MutableLiveData<TopAnimeResponse> = MutableLiveData()
-    val topAnimeResponse: MutableLiveData<TopAnimeResponse> =_topAnime
+    private val _topAnime: MutableLiveData<AnimeListResponse> = MutableLiveData()
+    val topAnimeResponse: MutableLiveData<AnimeListResponse> =_topAnime
 
     fun fetchTopAnime() = liveData(Dispatchers.IO) {
 
